@@ -1,0 +1,23 @@
+html { margin: 0 0 0 0; padding: 0 0 0 0; }
+body { background-color: #fefefe; color: #101010; padding: 1rem 1rem 1rem 1rem;}
+h1 { margin-top: 0; }
+hr { margin-top: 1.5rem; margin-bottom: 1.5rem; border: 2px solid #dddddd; }
+#example > img { width: 320px; padding: 1rem 1rem 1rem 1rem; }
+
+.example_info {
+	position: fixed; height: auto; left: 1rem; bottom: 1rem; 
+	background-color: #101010; color: #fefefe; width: inherit; height: inherit;
+	text-align: center; display: table-cell; vertical-align: middle;	padding: 0.5rem 1rem 0.5rem 1rem;
+}
+.example_info > #num_loaded_image {
+	
+}
+
+.credit {
+	background-color: #101010; color: #d0d0d0; font-size: 0.8rem;
+	text-align: center;	padding: 0.5rem 1rem 0.5rem 1rem;
+	position: fixed; height: auto; right: 1rem; bottom: 1rem; 
+}
+.credit > a, .credit > a:link, .credit > a:visited {
+	color: #d0d0d0;
+}

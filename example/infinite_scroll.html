@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>jquery.auto-unloader</title>
+		<link rel="stylesheet" href="example.css" />
+		<script src="lib/jquery-1.11.1.min.js"></script>
+		<script src="../jquery.auto-unloader.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				// Infinite scroll for the example
+				var id = 0;
+				var timer = null;
+				function loadExampleImages() {
+					$('#example_footer').html('loading...');
+					timer = window.setTimeout(function(){
+						// Append the example image
+						for (var i = 1; i < 36; i++) {
+							var $img = $('<img/>');
+							$img.attr('id', 'img_' + id);
+							$img.attr('src', 'img/img_' + (i%3) + '.jpg');
+							$('#example_footer').before($img);
+
+							id++;
+						}
+						$('#num_loaded_image').html(id + " images"); // Show the number of images
+						$('#example_footer').html('');
+						timer = null;
+					}, 1000);
+				};
+				loadExampleImages();
+				$(document).scroll(function(){
+					if (!timer && $('#example_footer').offset().top < $(window).scrollTop() + $(window).height()) {
+						loadExampleImages();
+					}
+				});
+
+				// ----
+				// Apply the AutoUnloader for example images
+				$('#example').applyAutoUnloader();
+			});
+		</script>
+	</head>
+	<body>
+		<h1>jquery.auto-unloader</h1>
+		<h2>Examples</h2>
+		<b>Infinite scroll</b>, <a href="infinite_scroll_lazy.html">Infinite scroll with lazy load</a>, <a href="infinite_scroll_unload-disabled.html">Auto unloader is Disabled</a>
+		<hr/>
+		
+		<div id="example">
+			<div id="example_footer"></div>
+		</div>
+
+		<div class="example_info">
+			<div id="num_loaded_image">0 images</div>
+		</div>
+
+		<div class="credit">
+			<a href="https://github.com/mugifly/jquery.auto-unloader/">jquery.auto-unloader</a><br/>
+			&copy; 2014 - <a href="http://ohgita.info/">Masanori Ohgita (mugifly).</a><br />
+		</div>
+	</body>
+</html>
